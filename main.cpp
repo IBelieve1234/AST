@@ -1,10 +1,128 @@
 #include<iostream>
 #include<fstream>
+#include<sstream>
 using namespace std;
 
+void unionLine();
+void regulateLine();
+void selectAttribute();
+bool checkNoSpace(string str);
 
 
 int main()
+{
+    selectAttribute();
+    return 0;
+}
+
+bool checkNoSpace(string str) //check if there is a space between attribute and colon
+{
+    for(int i=0;i<str.length();i++)
+    {
+        if(str[i]==':'&&str[i-1]==' ')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+void regulateLine()
+{
+    fstream inFile;
+    fstream outFile;
+    inFile.open("../result.txt",ios::in);
+    outFile.open("../result2.txt",ios::out);
+    string bufLine;
+    while(!inFile.eof())
+    {
+        getline(inFile,bufLine);//Read a Line.
+        while(checkNoSpace(bufLine)!= true)
+        {
+            for(int i=0;i<bufLine.length();i++)
+            {
+                if(bufLine[i]==':'&&bufLine[i-1]==' ')
+                {
+                    bufLine.erase(i-1,1);
+                }
+            }
+
+        }
+        cout<<bufLine<<endl;
+        outFile<<bufLine<<endl;
+        bufLine.clear();
+    }
+
+
+    inFile.close();
+    outFile.close();
+    return;
+}
+
+void selectAttribute()
+{
+    string attribute[1000];
+    int tag=0;
+    fstream inFile;
+    fstream outFile;
+    inFile.open("../result2.txt",ios::in);
+    outFile.open("../Attribute.txt",ios::out);
+    string bufLine;
+
+   //while(!inFile.eof())
+    //{
+
+
+
+
+    getline(inFile,bufLine);//Read a Line.
+         istringstream is(bufLine);
+        do
+         {
+            string substr;
+            is>>substr;
+            if(substr[substr.length()-1]==':')
+            {
+                substr.erase(substr.length()-1);
+                int k=0;
+                while(attribute[k]!="")
+                {
+                    
+                }
+                cout << substr<<endl;
+            }
+
+         } while(is);
+
+
+
+
+
+    //}
+
+
+
+
+
+    inFile.close();
+    outFile.close();
+    return;
+}
+
+
+
+
+
+
+
+
+
+
+
+void unionLine()
 {
     fstream inFile;
     fstream outFile;
@@ -18,13 +136,14 @@ int main()
 
     while(!inFile.eof())
     {
-       getline(inFile,nextLine);
-       for(int i=0;i<nextLine.length();i++)
-       {
-           if(nextLine[i]=='\r')
-               nextLine[i]=' ';
-       }
-       if(nextLine[0]=='@')
+        getline(inFile,nextLine);
+        //delete \r;
+        for(int i=0;i<nextLine.length();i++)
+        {
+            if(nextLine[i]=='\r')
+                nextLine[i]=' ';
+        }
+        if(nextLine[0]=='@')
         {
             cout<<bufLine<<endl;
             outFile<<bufLine<<endl;
@@ -39,5 +158,6 @@ int main()
     }
 
     inFile.close();
-    return 0;
+    outFile.close();
+    return;
 }
