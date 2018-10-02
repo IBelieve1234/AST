@@ -65,6 +65,7 @@ void regulateLine()
 void selectAttribute()
 {
     string attribute[1000];
+    bool flag=true;
     int tag=0;
     fstream inFile;
     fstream outFile;
@@ -72,36 +73,46 @@ void selectAttribute()
     outFile.open("../Attribute.txt",ios::out);
     string bufLine;
 
-   //while(!inFile.eof())
-    //{
+   while(!inFile.eof())
+    {
 
 
 
 
-    getline(inFile,bufLine);//Read a Line.
+         getline(inFile,bufLine);//Read a Line.
          istringstream is(bufLine);
         do
          {
+            flag=true;
             string substr;
             is>>substr;
             if(substr[substr.length()-1]==':')
             {
-                substr.erase(substr.length()-1);
+
+                substr.erase( substr.length()-1);  //delete colon
                 int k=0;
-                while(attribute[k]!="")
+                while(!attribute[k].empty())
                 {
-                    
+                    if(attribute[k]== substr)
+                    {
+                        flag=false;
+                    }
+                    k++;
+
                 }
-                cout << substr<<endl;
+                if(flag)
+                {
+                    attribute[tag]= substr;
+                    cout << substr<<endl;
+                    outFile<<substr<<endl;
+                    tag++;
+                }
+
             }
 
          } while(is);
 
-
-
-
-
-    //}
+    }
 
 
 
