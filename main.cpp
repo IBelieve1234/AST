@@ -6,14 +6,51 @@ using namespace std;
 void unionLine();
 void regulateLine();
 void selectAttribute();
+void solveOP();
 bool checkNoSpace(string str);
 
 
 int main()
 {
-    selectAttribute();
+    //unionLine();
+    //regulateLine();
+    //solveOP();
+    //selectAttribute();
     return 0;
 }
+
+void solveOP()
+{
+    fstream inFile;
+    fstream outFile;
+    inFile.open("../result2.txt",ios::in);
+    outFile.open("../result3.txt",ios::out);
+    string bufLine;
+    while(!inFile.eof())
+    {
+        getline(inFile,bufLine);//Read a Line.
+        for(int i=0;i<bufLine.length();i++)
+        {
+            if(bufLine[i]==':'&&bufLine[i-3]=='p')
+            {
+                if(bufLine[i-1]>='0'&&bufLine[i-1]<='2')
+                    bufLine.erase(i-2,1);
+
+            }
+        }
+        cout<<bufLine<<endl;
+        outFile<<bufLine<<endl;
+        bufLine.clear();
+    }
+
+
+    inFile.close();
+    outFile.close();
+    return;
+}
+
+
+
 
 bool checkNoSpace(string str) //check if there is a space between attribute and colon
 {
@@ -69,16 +106,12 @@ void selectAttribute()
     int tag=0;
     fstream inFile;
     fstream outFile;
-    inFile.open("../result2.txt",ios::in);
+    inFile.open("../result3.txt",ios::in);
     outFile.open("../Attribute.txt",ios::out);
     string bufLine;
 
    while(!inFile.eof())
     {
-
-
-
-
          getline(inFile,bufLine);//Read a Line.
          istringstream is(bufLine);
         do
