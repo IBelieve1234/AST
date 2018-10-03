@@ -25,15 +25,14 @@ void HavingAttributeLookingForValue(string attribute);
 void AttributeAndValueAreReady(int SequenceNum);
 
 
-
 int main()
 {
     //unionLine();
     //regulateLine();
     //solveOP();
-    solveSTRG();
+    //solveSTRG();
     //selectAttribute();
-    //GenerateStructArray();
+    GenerateStructArray();
 
     return 0;
 }
@@ -96,9 +95,6 @@ struct StructNode
     string domn;
     string refd;
 }structArray[5000];
-
-
-
 
 
 
@@ -433,8 +429,8 @@ void ShowAStruct(int SequenceNum)
     if(structArray[SequenceNum].NotNull)
     {
 
-        cout<<"NodeSequenceNUm:"<<structArray[SequenceNum].NodeSequenceNUm<<"  ";
-        cout<<"NodeName:"<<structArray[SequenceNum].NodeName<<"  ";
+        cout<<structArray[SequenceNum].NodeSequenceNUm<<"  ";
+        cout<<structArray[SequenceNum].NodeName<<"  ";
 
 
 
@@ -619,7 +615,7 @@ void ShowAStruct(int SequenceNum)
 void GenerateStructArray()
 {
     fstream inFile;
-    inFile.open("../result3.txt",ios::in);
+    inFile.open("../result4.txt",ios::in);
     string bufLine;
     int SequenceNum=0;
     while(!inFile.eof())
