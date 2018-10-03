@@ -16,6 +16,7 @@ void unionLine();
 void regulateLine();
 void selectAttribute();
 void solveOP();
+void solveSTRG();
 bool checkNoSpace(string str);
 void GenerateStructArray();
 void AlineToAStruct(string str,int SequenceNum);
@@ -23,13 +24,16 @@ void ShowAStruct(int SequenceNum);
 void HavingAttributeLookingForValue(string attribute);
 void AttributeAndValueAreReady(int SequenceNum);
 
+
+
 int main()
 {
     //unionLine();
     //regulateLine();
     //solveOP();
+    solveSTRG();
     //selectAttribute();
-    GenerateStructArray();
+    //GenerateStructArray();
 
     return 0;
 }
@@ -92,6 +96,94 @@ struct StructNode
     string domn;
     string refd;
 }structArray[5000];
+
+
+
+
+
+
+
+void solveSTRG()
+{
+    fstream inFile;
+    fstream outFile;
+    inFile.open("../result3.txt",ios::in);
+    outFile.open("../result4.txt",ios::out);
+    string bufLine;
+    while(!inFile.eof())
+    {
+        getline(inFile,bufLine);//Read a Line.
+        string newstr;
+        string substr;
+        bool strgFlag=false;
+        bool readyFlag=false;
+        istringstream is(bufLine);
+        is>>substr;
+        newstr=substr;
+        while(is)
+        {
+            is>>substr;
+            if(!strgFlag)
+            {
+                if(substr=="strg:")
+                {
+                    strgFlag=true;
+                    newstr=newstr+" "+substr;
+                }
+                else
+                {
+                    newstr=newstr+" "+substr;
+                }
+
+            }
+            else
+            {
+
+                if(substr=="long"||substr=="short"||substr=="complex"||substr=="signed"||substr=="unsigned")
+                {
+
+                    if(readyFlag)
+                    {
+                        newstr=newstr+substr;
+                    }
+                    else
+                    {
+                        newstr=newstr+" "+substr;
+                    }
+
+                    readyFlag=true;
+
+                }
+                else
+                {
+                    if(readyFlag)
+                    {
+                        newstr=newstr+substr;
+                    }
+                    else
+                    {
+                        newstr=newstr+" "+substr;
+                    }
+                    readyFlag=false;
+                    strgFlag=false;
+                }
+            }
+
+            substr.clear();
+
+        }
+
+        cout<<newstr<<endl;
+        outFile<<newstr<<endl;
+
+    }
+
+
+    inFile.close();
+    outFile.close();
+    return;
+}
+
 
 
 
