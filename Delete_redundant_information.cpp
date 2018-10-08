@@ -7,216 +7,253 @@ void visit_Useful_Node(int i){
     string temp;
     if(structArray[i].ifuseful==true&&structArray[i].ifvisited==false){
         structArray[i].ifvisited=true;//置为已访问
+
         //name
-        if(structArray[i].name.find('@')!=string::npos){
+        if(structArray[i].name.find("@")!=string::npos){
             temp=structArray[i].name;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //type
-        if(structArray[i].type.find('@')!=string::npos){
+        if(structArray[i].type.find("@")!=string::npos){
             temp=structArray[i].type;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //chan
-        if(structArray[i].chan.find('@')!=string::npos){
+        if(structArray[i].chan.find("@")!=string::npos){
             temp=structArray[i].chan;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //strg
-        if(structArray[i].strg.find('@')!=string::npos){
+        if(structArray[i].strg.find("@")!=string::npos){
             temp=structArray[i].strg;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //size
-        if(structArray[i].size.find('@')!=string::npos){
+        if(structArray[i].size.find("@")!=string::npos){
             temp=structArray[i].size;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //sign
-        if(structArray[i].sign.find('@')!=string::npos){
+        if(structArray[i].sign.find("@")!=string::npos){
             temp=structArray[i].sign;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //min
-        if(structArray[i].min.find('@')!=string::npos){
+        if(structArray[i].min.find("@")!=string::npos){
             temp=structArray[i].min;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //max
-        if(structArray[i].max.find('@')!=string::npos){
+        if(structArray[i].max.find("@")!=string::npos){
             temp=structArray[i].max;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //unql
-        if(structArray[i].unql.find('@')!=string::npos){
+        if(structArray[i].unql.find("@")!=string::npos){
             temp=structArray[i].unql;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //ptd
-        if(structArray[i].ptd.find('@')!=string::npos){
+        if(structArray[i].ptd.find("@")!=string::npos){
             temp=structArray[i].ptd;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //mngl
-        if(structArray[i].mngl.find('@')!=string::npos){
+        if(structArray[i].mngl.find("@")!=string::npos){
             temp=structArray[i].mngl;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //srcp
-        if(structArray[i].srcp.find('@')!=string::npos){
+        if(structArray[i].srcp.find("@")!=string::npos){
             temp=structArray[i].srcp;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //body
-        if(structArray[i].body.find('@')!=string::npos){
+        if(structArray[i].body.find("@")!=string::npos){
             temp=structArray[i].body;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //link
-        if(structArray[i].link.find('@')!=string::npos){
+        if(structArray[i].link.find("@")!=string::npos){
             temp=structArray[i].link;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //retn
-        if(structArray[i].retn.find('@')!=string::npos){
+        if(structArray[i].retn.find("@")!=string::npos){
             temp=structArray[i].retn;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //prms
-        if(structArray[i].prms.find('@')!=string::npos){
+        if(structArray[i].prms.find("@")!=string::npos){
             temp=structArray[i].prms;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //valu
-        if(structArray[i].valu.find('@')!=string::npos){
+        if(structArray[i].valu.find("@")!=string::npos){
             temp=structArray[i].valu;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //qual
-        if(structArray[i].qual.find('@')!=string::npos){
+        if(structArray[i].qual.find("@")!=string::npos){
             temp=structArray[i].qual;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //tag
-        if(structArray[i].tag.find('@')!=string::npos){
+        if(structArray[i].tag.find("@")!=string::npos){
             temp=structArray[i].tag;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //flds
-        if(structArray[i].flds.find('@')!=string::npos){
+        if(structArray[i].flds.find("@")!=string::npos){
             temp=structArray[i].flds;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //args
-        if(structArray[i].args.find('@')!=string::npos){
+        if(structArray[i].args.find("@")!=string::npos){
             temp=structArray[i].args;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //scpe
-        if(structArray[i].scpe.find('@')!=string::npos){
+        if(structArray[i].scpe.find("@")!=string::npos){
             temp=structArray[i].scpe;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //bpos
-        if(structArray[i].bpos.find('@')!=string::npos){
+        if(structArray[i].bpos.find("@")!=string::npos){
             temp=structArray[i].bpos;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //argt
-        if(structArray[i].argt.find('@')!=string::npos){
+        if(structArray[i].argt.find("@")!=string::npos){
             temp=structArray[i].argt;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //expr
-        if(structArray[i].expr.find('@')!=string::npos){
+        if(structArray[i].expr.find("@")!=string::npos){
             temp=structArray[i].expr;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //elts
-        if(structArray[i].elts.find('@')!=string::npos){
+        if(structArray[i].elts.find("@")!=string::npos){
             temp=structArray[i].elts;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //op0
-        if(structArray[i].op0.find('@')!=string::npos){
+        if(structArray[i].op0.find("@")!=string::npos){
             temp=structArray[i].op0;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //op1
-        if(structArray[i].op1.find('@')!=string::npos){
+        if(structArray[i].op1.find("@")!=string::npos){
             temp=structArray[i].op1;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //note
-        if(structArray[i].note.find('@')!=string::npos){
+        if(structArray[i].note.find("@")!=string::npos){
             temp=structArray[i].note;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //op2
-        if(structArray[i].op2.find('@')!=string::npos){
+        if(structArray[i].op2.find("@")!=string::npos){
             temp=structArray[i].op2;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //fn
-        if(structArray[i].fn.find('@')!=string::npos){
+        if(structArray[i].fn.find("@")!=string::npos){
             temp=structArray[i].fn;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //vars
-        if(structArray[i].vars.find('@')!=string::npos){
+        if(structArray[i].vars.find("@")!=string::npos){
             temp=structArray[i].vars;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //labl
-        if(structArray[i].labl.find('@')!=string::npos){
+        if(structArray[i].labl.find("@")!=string::npos){
             temp=structArray[i].labl;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //domn
-        if(structArray[i].domn.find('@')!=string::npos){
+        if(structArray[i].domn.find("@")!=string::npos){
             temp=structArray[i].domn;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
         //refd
-        if(structArray[i].refd.find('@')!=string::npos){
+        if(structArray[i].refd.find("@")!=string::npos){
             temp=structArray[i].refd;
-            temp.erase(temp.find('@'));
+            temp.erase(0,1);
+            structArray[atoi(temp.c_str())].ifuseful=true;
             visit_Useful_Node(atoi(temp.c_str()));//对子节点第归
         }
+        //structArray[i].ifvisited=true;//置为已访问
     }
 
 }
@@ -236,7 +273,7 @@ void Delete_redundant_information(string file_position){
         getline(inFile,bufLine);
         if(!bufLine.empty())
         {count++;
-        //cout<<count<<" "<<bufLine<<endl;
+            //cout<<count<<" "<<bufLine<<endl;
         }
     }while(!bufLine.empty());
     //cout<<"hello1!";
@@ -479,17 +516,17 @@ void Delete_redundant_information(string file_position){
     for(int i=1;i<=count;i++)//寻找根有用节点
         if(structArray[i].srcp.find(".c")!=string::npos)
         {b.push_back(i);//将根有用节点序号压栈
-         structArray[i].ifuseful=true;
-         }
-            //for(int i=0;i<b.size();i++)/////////
-            //cout<<endl<<b[i]<<endl;/////////////
+            structArray[i].ifuseful=true;
+        }
+    //for(int i=0;i<b.size();i++)/////////
+    //cout<<endl<<b[i]<<endl;/////////////
     for(int j=0;j<b.size();j++)
         visit_Useful_Node(b[j]);//第归访问根有用节点
 
     for(int i=1;i<=count;i++)//处理call_expr
         if(structArray[i].NodeName=="call_expr")
         {bc.push_back(i);
-         structArray[i].ifuseful=true;
+            structArray[i].ifuseful=true;
         }
     //for(int i=0;i<bc.size();i++)/////////
     //cout<<endl<<bc[i]<<endl;/////////////
@@ -504,5 +541,5 @@ void Delete_redundant_information(string file_position){
         {
             ShowAStruct(k);
         }
-            //cout<<structArray[k].NodeSequenceNUm<<endl;
+    //cout<<structArray[k].NodeSequenceNUm<<endl;
 }
