@@ -67,6 +67,8 @@ typedef struct StructNode
     string labl;
     string domn;
     string refd;
+    bool ifvisited;
+    bool ifuseful;
 }Node;
 
 

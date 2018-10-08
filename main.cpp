@@ -1,12 +1,10 @@
-#include"Pretreatment.h"
+#include"Delete_redundant_information.h"
 using namespace std;
-
-
-extern Node structArray[5000];
-
 int main()
 {
-    GetInformation();
+    //GetInformation();
+    //cout<<"hello!main";
+    Delete_redundant_information("../result4.txt");
     return 0;
 
 }

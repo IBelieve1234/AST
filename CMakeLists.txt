@@ -3,4 +3,4 @@ project(AST)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AST main.cpp Pretreatment.cpp Pretreatment.h)
+add_executable(AST main.cpp Pretreatment.cpp Pretreatment.h Delete_redundant_information.h Delete_redundant_information.cpp)
