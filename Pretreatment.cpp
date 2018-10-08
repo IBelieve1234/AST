@@ -5,71 +5,14 @@
 #include "Pretreatment.h"
 
 
+
+
 bool IAmAttributeAndINeedingValue= false;
 bool IAmValue=false;
 string PrepareedAttribute;
 string PrepareedValue;
+Node structArray[5000];
 
-
-
-
-struct StructNode
-{
-
-
-    bool NotNull;
-    string NodeName;
-    string NodeSequenceNUm;
-
-
-
-
-    string name;
-    string type;
-    string chan;
-    //
-    string strg;
-    //
-    int lngt;
-    string size;
-    int algn;
-    int prec;
-    string sign;
-    string min;
-    string max;
-    int low;
-    int high;
-    string unql;
-    string ptd;
-    string mngl;
-    //
-    string srcp;
-    //
-    string body;
-    string link;
-    string retn;
-    string prms;
-    string valu;
-    string qual;
-    string tag;
-    string flds;
-    string args;
-    string scpe;
-    string bpos;
-    string argt;
-    int used;
-    string expr;
-    string elts;
-    string op0;
-    string op1;
-    string note;
-    string op2;
-    string fn;
-    string vars;
-    string labl;
-    string domn;
-    string refd;
-}structArray[5000];
 
 
 void GetInformation()
@@ -80,9 +23,23 @@ void GetInformation()
     //solveSTRG();
     //selectAttribute();
     GenerateStructArray();
+    //ShowAllStruct();
 
 }
 
+
+
+void ShowAllStruct()
+{
+    for(int i=0;i<5000;i++)
+    {
+        if(structArray[i].NotNull)
+        {
+            ShowAStruct(i);
+        }
+
+    }
+}
 
 
 
@@ -602,6 +559,7 @@ void ShowAStruct(int SequenceNum)
 
 void GenerateStructArray()
 {
+
     fstream inFile;
     inFile.open("../result4.txt",ios::in);
     string bufLine;
@@ -610,8 +568,9 @@ void GenerateStructArray()
     {
         getline(inFile,bufLine);//Read a Line.
         AlineToAStruct(bufLine,SequenceNum);
-        ShowAStruct(SequenceNum);
+        //ShowAStruct(SequenceNum);
         SequenceNum++;
+        structArray[SequenceNum].NotNull=true;
         bufLine.clear();
     }
     inFile.close();
