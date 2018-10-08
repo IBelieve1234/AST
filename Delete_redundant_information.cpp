@@ -501,5 +501,8 @@ void Delete_redundant_information(string file_position){
     //Here i print all useful node
     for(int k=1;k<=count;k++)
         if(structArray[k].ifuseful==true)
-            cout<<structArray[k].NodeSequenceNUm<<endl;
+        {
+            ShowAStruct(k);
+        }
+            //cout<<structArray[k].NodeSequenceNUm<<endl;
 }

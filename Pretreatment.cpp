@@ -114,7 +114,7 @@ void solveSTRG()
 
         }
 
-        //cout<<newstr<<endl;
+        cout<<newstr<<endl;
         outFile<<newstr<<endl;
 
     }
@@ -346,7 +346,7 @@ void AttributeAndValueAreReady(int SequenceNum)
     }
     else
     {
-        //cout<<"Wrong! Can not find the attribute."<<endl;
+        cout<<"Wrong! Can not find the attribute."<<endl;
     }
 
 
@@ -374,183 +374,183 @@ void ShowAStruct(int SequenceNum)
     if(structArray[SequenceNum].NotNull)
     {
 
-        //cout<<structArray[SequenceNum].NodeSequenceNUm<<"  ";
-        //cout<<structArray[SequenceNum].NodeName<<"  ";
+        cout<<structArray[SequenceNum].NodeSequenceNUm<<"  ";
+        cout<<structArray[SequenceNum].NodeName<<"  ";
 
 
 
         if(structArray[SequenceNum].name!="")
         {
-            //cout<<"name:"<<structArray[SequenceNum].name<<"  ";
+            cout<<"name:"<<structArray[SequenceNum].name<<"  ";
         }
         if(structArray[SequenceNum].type!="")
         {
-            //cout<<"type:"<<structArray[SequenceNum].type<<"  ";
+            cout<<"type:"<<structArray[SequenceNum].type<<"  ";
         }
         if(structArray[SequenceNum].chan!="")
         {
-            //cout<<"chan:"<<structArray[SequenceNum].chan<<"  ";
+            cout<<"chan:"<<structArray[SequenceNum].chan<<"  ";
         }
         if(structArray[SequenceNum].strg!="")
         {
-            //cout<<"strg:"<<structArray[SequenceNum].strg<<"  ";
+            cout<<"strg:"<<structArray[SequenceNum].strg<<"  ";
         }
         if(structArray[SequenceNum].size!="")
         {
-            //cout<<"size:"<<structArray[SequenceNum].size<<"  ";
+            cout<<"size:"<<structArray[SequenceNum].size<<"  ";
         }
         if(structArray[SequenceNum].sign!="")
         {
-            //cout<<"sign:"<<structArray[SequenceNum].sign<<"  ";
+            cout<<"sign:"<<structArray[SequenceNum].sign<<"  ";
         }
         if(structArray[SequenceNum].min!="")
         {
-            //cout<<"min:"<<structArray[SequenceNum].min<<"  ";
+            cout<<"min:"<<structArray[SequenceNum].min<<"  ";
         }
         if(structArray[SequenceNum].max!="")
         {
-            //cout<<"max:"<<structArray[SequenceNum].max<<"  ";
+            cout<<"max:"<<structArray[SequenceNum].max<<"  ";
         }
         if(structArray[SequenceNum].unql!="")
         {
-            //cout<<"unql:"<<structArray[SequenceNum].unql<<"  ";
+            cout<<"unql:"<<structArray[SequenceNum].unql<<"  ";
         }
         if(structArray[SequenceNum].ptd!="")
         {
-            //cout<<"ptd:"<<structArray[SequenceNum].ptd<<"  ";
+            cout<<"ptd:"<<structArray[SequenceNum].ptd<<"  ";
         }
         if(structArray[SequenceNum].mngl!="")
         {
-            //cout<<"mngl:"<<structArray[SequenceNum].mngl<<"  ";
+            cout<<"mngl:"<<structArray[SequenceNum].mngl<<"  ";
         }
         if(structArray[SequenceNum].srcp!="")
         {
-            //cout<<"srcp:"<<structArray[SequenceNum].srcp<<"  ";
+            cout<<"srcp:"<<structArray[SequenceNum].srcp<<"  ";
         }
         if(structArray[SequenceNum].body!="")
         {
-            //cout<<"body:"<<structArray[SequenceNum].body<<"  ";
+            cout<<"body:"<<structArray[SequenceNum].body<<"  ";
         }
         if(structArray[SequenceNum].link!="")
         {
-            //cout<<"link:"<<structArray[SequenceNum].link<<"  ";
+            cout<<"link:"<<structArray[SequenceNum].link<<"  ";
         }
         if(structArray[SequenceNum].retn!="")
         {
-            //cout<<"retn:"<<structArray[SequenceNum].retn<<"  ";
+            cout<<"retn:"<<structArray[SequenceNum].retn<<"  ";
         }
         if(structArray[SequenceNum].prms!="")
         {
-            //cout<<"prms:"<<structArray[SequenceNum].prms<<"  ";
+            cout<<"prms:"<<structArray[SequenceNum].prms<<"  ";
         }
         if(structArray[SequenceNum].valu!="")
         {
-            //cout<<"valu:"<<structArray[SequenceNum].valu<<"  ";
+            cout<<"valu:"<<structArray[SequenceNum].valu<<"  ";
         }
         if(structArray[SequenceNum].qual!="")
         {
-            //cout<<"qual:"<<structArray[SequenceNum].qual<<"  ";
+            cout<<"qual:"<<structArray[SequenceNum].qual<<"  ";
         }
         if(structArray[SequenceNum].tag!="")
         {
-            //cout<<"tag:"<<structArray[SequenceNum].tag<<"  ";
+            cout<<"tag:"<<structArray[SequenceNum].tag<<"  ";
         }
         if(structArray[SequenceNum].flds!="")
         {
-            //cout<<"flds:"<<structArray[SequenceNum].flds<<"  ";
+            cout<<"flds:"<<structArray[SequenceNum].flds<<"  ";
         }
         if(structArray[SequenceNum].args!="")
         {
-            //cout<<"args:"<<structArray[SequenceNum].args<<"  ";
+            cout<<"args:"<<structArray[SequenceNum].args<<"  ";
         }
         if(structArray[SequenceNum].scpe!="")
         {
-            //cout<<"scpe:"<<structArray[SequenceNum].scpe<<"  ";
+            cout<<"scpe:"<<structArray[SequenceNum].scpe<<"  ";
         }
         if(structArray[SequenceNum].bpos!="")
         {
-            //cout<<"bpos:"<<structArray[SequenceNum].bpos<<"  ";
+            cout<<"bpos:"<<structArray[SequenceNum].bpos<<"  ";
         }
         if(structArray[SequenceNum].argt!="")
         {
-            //cout<<"argt:"<<structArray[SequenceNum].argt<<"  ";
+            cout<<"argt:"<<structArray[SequenceNum].argt<<"  ";
         }
         if(structArray[SequenceNum].expr!="")
         {
-            //cout<<"expr:"<<structArray[SequenceNum].expr<<"  ";
+            cout<<"expr:"<<structArray[SequenceNum].expr<<"  ";
         }
         if(structArray[SequenceNum].elts!="")
         {
-            //cout<<"elts:"<<structArray[SequenceNum].elts<<"  ";
+            cout<<"elts:"<<structArray[SequenceNum].elts<<"  ";
         }
         if(structArray[SequenceNum].op0!="")
         {
-            //cout<<"op0:"<<structArray[SequenceNum].op0<<"  ";
+            cout<<"op0:"<<structArray[SequenceNum].op0<<"  ";
         }
         if(structArray[SequenceNum].op1!="")
         {
-            //cout<<"op1:"<<structArray[SequenceNum].op1<<"  ";
+            cout<<"op1:"<<structArray[SequenceNum].op1<<"  ";
         }
         if(structArray[SequenceNum].note!="")
         {
-            //cout<<"note:"<<structArray[SequenceNum].note<<"  ";
+            cout<<"note:"<<structArray[SequenceNum].note<<"  ";
         }
         if(structArray[SequenceNum].op2!="")
         {
-            //cout<<"op2:"<<structArray[SequenceNum].op2<<"  ";
+            cout<<"op2:"<<structArray[SequenceNum].op2<<"  ";
         }
         if(structArray[SequenceNum].fn!="")
         {
-            //cout<<"fn:"<<structArray[SequenceNum].fn<<"  ";
+            cout<<"fn:"<<structArray[SequenceNum].fn<<"  ";
         }
         if(structArray[SequenceNum].vars!="")
         {
-            //cout<<"vars:"<<structArray[SequenceNum].vars<<"  ";
+            cout<<"vars:"<<structArray[SequenceNum].vars<<"  ";
         }
         if(structArray[SequenceNum].labl!="")
         {
-            //cout<<"labl:"<<structArray[SequenceNum].labl<<"  ";
+            cout<<"labl:"<<structArray[SequenceNum].labl<<"  ";
         }
         if(structArray[SequenceNum].domn!="")
         {
-            //cout<<"domn:"<<structArray[SequenceNum].domn<<"  ";
+            cout<<"domn:"<<structArray[SequenceNum].domn<<"  ";
         }
         if(structArray[SequenceNum].refd!="")
         {
-            //cout<<"refd:"<<structArray[SequenceNum].refd<<"  ";
+            cout<<"refd:"<<structArray[SequenceNum].refd<<"  ";
         }
         if(structArray[SequenceNum].lngt!=0)
         {
-            //cout<<"lngt:"<<structArray[SequenceNum].lngt<<"  ";
+            cout<<"lngt:"<<structArray[SequenceNum].lngt<<"  ";
         }
         if(structArray[SequenceNum].algn!=0)
         {
-            //cout<<"algn:"<<structArray[SequenceNum].algn<<"  ";
+            cout<<"algn:"<<structArray[SequenceNum].algn<<"  ";
         }
         if(structArray[SequenceNum].prec!=0)
         {
-            //cout<<"prec:"<<structArray[SequenceNum].prec<<"  ";
+            cout<<"prec:"<<structArray[SequenceNum].prec<<"  ";
         }
         if(structArray[SequenceNum].low!=0)
         {
-            //cout<<"low:"<<structArray[SequenceNum].low<<"  ";
+            cout<<"low:"<<structArray[SequenceNum].low<<"  ";
         }
         if(structArray[SequenceNum].high!=0)
         {
-            //cout<<"high:"<<structArray[SequenceNum].high<<"  ";
+            cout<<"high:"<<structArray[SequenceNum].high<<"  ";
         }
         if(structArray[SequenceNum].used!=0)
         {
-            //cout<<"used:"<<structArray[SequenceNum].used<<"  ";
+            cout<<"used:"<<structArray[SequenceNum].used<<"  ";
         }
 
 
     } else
     {
-        //cout<<"Sorry No."<<SequenceNum<<" record is null"<<endl;
+        cout<<"Sorry No."<<SequenceNum<<" record is null"<<endl;
     }
 
-    //cout<<endl;
+    cout<<endl;
 }
 
 
@@ -600,7 +600,7 @@ void solveOP()
 
             }
         }
-        //cout<<bufLine<<endl;
+        cout<<bufLine<<endl;
         outFile<<bufLine<<endl;
         bufLine.clear();
     }
@@ -650,7 +650,7 @@ void regulateLine()
             }
 
         }
-        //cout<<bufLine<<endl;
+        cout<<bufLine<<endl;
         outFile<<bufLine<<endl;
         bufLine.clear();
     }
@@ -698,7 +698,7 @@ void selectAttribute()
                 if(flag)
                 {
                     attribute[tag]= substr;
-                    //cout << substr<<endl;
+                    cout << substr<<endl;
                     outFile<<substr<<endl;
                     tag++;
                 }
@@ -751,7 +751,7 @@ void unionLine()
         }
         if(nextLine[0]=='@')
         {
-            //cout<<bufLine<<endl;
+            cout<<bufLine<<endl;
             outFile<<bufLine<<endl;
             bufLine.clear();
             bufLine=nextLine;
