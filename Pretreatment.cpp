@@ -519,6 +519,54 @@ void ShowAStruct(int SequenceNum)
         {
             cout<<"refd:"<<structArray[SequenceNum].refd<<"  ";
         }
+        if(structArray[SequenceNum].num0!="")
+        {
+            cout<<"0:"<<structArray[SequenceNum].num0<<"  ";
+        }
+        if(structArray[SequenceNum].num1!="")
+        {
+            cout<<"1:"<<structArray[SequenceNum].num1<<"  ";
+        }
+        if(structArray[SequenceNum].num2!="")
+        {
+            cout<<"2:"<<structArray[SequenceNum].num2<<"  ";
+        }
+        if(structArray[SequenceNum].num3!="")
+        {
+            cout<<"3:"<<structArray[SequenceNum].num3<<"  ";
+        }
+        if(structArray[SequenceNum].num4!="")
+        {
+            cout<<"4:"<<structArray[SequenceNum].num4<<"  ";
+        }
+        if(structArray[SequenceNum].num5!="")
+        {
+            cout<<"5:"<<structArray[SequenceNum].num5<<"  ";
+        }
+        if(structArray[SequenceNum].num6!="")
+        {
+            cout<<"6:"<<structArray[SequenceNum].num6<<"  ";
+        }
+        if(structArray[SequenceNum].num7!="")
+        {
+            cout<<"7:"<<structArray[SequenceNum].num7<<"  ";
+        }
+        if(structArray[SequenceNum].num8!="")
+        {
+            cout<<"8:"<<structArray[SequenceNum].num8<<"  ";
+        }
+        if(structArray[SequenceNum].num9!="")
+        {
+            cout<<"9:"<<structArray[SequenceNum].num9<<"  ";
+        }
+        if(structArray[SequenceNum].num10!="")
+        {
+            cout<<"10:"<<structArray[SequenceNum].num10<<"  ";
+        }
+        if(structArray[SequenceNum].num11!="")
+        {
+            cout<<"11:"<<structArray[SequenceNum].num11<<"  ";
+        }
         if(structArray[SequenceNum].lngt!=0)
         {
             cout<<"lngt:"<<structArray[SequenceNum].lngt<<"  ";

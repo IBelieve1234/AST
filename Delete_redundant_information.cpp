@@ -255,9 +255,8 @@ void visit_Useful_Node(int i){
         }
         //structArray[i].ifvisited=true;//置为已访问
     }
-
 }
-void Delete_redundant_information(string file_position){
+int Read_struct(string file_position){
     GetInformation();
     fstream inFile;
     inFile.open(file_position,ios::in);
@@ -337,6 +336,7 @@ void Delete_redundant_information(string file_position){
         structArray[i].used=0;
         structArray[i].ifuseful=false;
         structArray[i].ifvisited=false;
+        structArray[i].flag=2;
         structArray[i].NodeSequenceNUm=arr[0];
         structArray[i].NodeName=arr[1];
         for(size_t j=2;j<arr.size();j++){
@@ -505,41 +505,520 @@ void Delete_redundant_information(string file_position){
             {   j++;
                 structArray[i].used=atoi(arr[j].c_str());
             }
+            if(arr[j]=="0:")
+            {
+                j++;
+                structArray[i].num0=(arr[j].c_str());
+            }
+            if(arr[j]=="1:")
+            {
+                j++;
+                structArray[i].num1=(arr[j].c_str());
+            }
+            if(arr[j]=="2:")
+            {
+                j++;
+                structArray[i].num2=(arr[j].c_str());
+            }
+            if(arr[j]=="3:")
+            {
+                j++;
+                structArray[i].num3=(arr[j].c_str());
+            }
+            if(arr[j]=="4:")
+            {
+                j++;
+                structArray[i].num4=(arr[j].c_str());
+            }
+            if(arr[j]=="5:")
+            {
+                j++;
+                structArray[i].num5=(arr[j].c_str());
+            }
+            if(arr[j]=="6:")
+            {
+                j++;
+                structArray[i].num6=(arr[j].c_str());
+            }
+            if(arr[j]=="7:")
+            {
+                j++;
+                structArray[i].num7=(arr[j].c_str());
+            }
+            if(arr[j]=="8:")
+            {
+                j++;
+                structArray[i].num8=(arr[j].c_str());
+            }
+            if(arr[j]=="9:")
+            {
+                j++;
+                structArray[i].num9=(arr[j].c_str());
+            }
+            if(arr[j]=="10:")
+            {
+                j++;
+                structArray[i].num10=(arr[j].c_str());
+            }
+            if(arr[j]=="11:")
+            {
+                j++;
+                structArray[i].num11=(arr[j].c_str());
+            }
         }
     }//已读取信息到结构体
     inFile1.close();
-    //cout<<structArray[1].NodeSequenceNUm<<endl;
-    //cout<<structArray[2785].NodeSequenceNUm<<endl;
-
-
-    vector<int>b,bc; //处理srcp
-    for(int i=1;i<=count;i++)//寻找根有用节点
-        if(structArray[i].srcp.find(".c")!=string::npos)
-        {b.push_back(i);//将根有用节点序号压栈
-            structArray[i].ifuseful=true;
+    return count;
+}
+void Delete_redundant_information(string file_position){
+    int count;
+    count=Read_struct(file_position);
+    for(int i=1;i<=count;i++){
+        if(!structArray[i].srcp.empty()){
+            if(structArray[i].srcp.find(".c")!=string::npos)
+                structArray[i].flag=1;
+            else structArray[i].flag=0;
         }
-    //for(int i=0;i<b.size();i++)/////////
-    //cout<<endl<<b[i]<<endl;/////////////
-    for(int j=0;j<b.size();j++)
-        visit_Useful_Node(b[j]);//第归访问根有用节点
+        else structArray[i].flag=2;
 
+    }
+
+    for(int i=1;i<=count;i++){
+        if(structArray[i].flag!=2){
+
+            string temp;
+            //name
+            if(structArray[i].name.find("@")!=string::npos){
+                temp=structArray[i].name;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //type
+            if(structArray[i].type.find("@")!=string::npos){
+                temp=structArray[i].type;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //chan
+            if(structArray[i].chan.find("@")!=string::npos){
+                temp=structArray[i].chan;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //strg
+            if(structArray[i].strg.find("@")!=string::npos){
+                temp=structArray[i].strg;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //size
+            if(structArray[i].size.find("@")!=string::npos){
+                temp=structArray[i].size;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+
+            }
+            //sign
+            if(structArray[i].sign.find("@")!=string::npos){
+                temp=structArray[i].sign;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //min
+            if(structArray[i].min.find("@")!=string::npos){
+                temp=structArray[i].min;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //max
+            if(structArray[i].max.find("@")!=string::npos){
+                temp=structArray[i].max;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //unql
+            if(structArray[i].unql.find("@")!=string::npos){
+                temp=structArray[i].unql;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //ptd
+            if(structArray[i].ptd.find("@")!=string::npos){
+                temp=structArray[i].ptd;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //mngl
+            if(structArray[i].mngl.find("@")!=string::npos){
+                temp=structArray[i].mngl;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //srcp
+            if(structArray[i].srcp.find("@")!=string::npos){
+                temp=structArray[i].srcp;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //body
+            if(structArray[i].body.find("@")!=string::npos){
+                temp=structArray[i].body;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //link
+            if(structArray[i].link.find("@")!=string::npos){
+                temp=structArray[i].link;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //retn
+            if(structArray[i].retn.find("@")!=string::npos){
+                temp=structArray[i].retn;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //prms
+            if(structArray[i].prms.find("@")!=string::npos){
+                temp=structArray[i].prms;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //valu
+            if(structArray[i].valu.find("@")!=string::npos){
+                temp=structArray[i].valu;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //qual
+            if(structArray[i].qual.find("@")!=string::npos){
+                temp=structArray[i].qual;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //tag
+            if(structArray[i].tag.find("@")!=string::npos){
+                temp=structArray[i].tag;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //flds
+            if(structArray[i].flds.find("@")!=string::npos){
+                temp=structArray[i].flds;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //args
+            if(structArray[i].args.find("@")!=string::npos){
+                temp=structArray[i].args;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //scpe
+            if(structArray[i].scpe.find("@")!=string::npos){
+                temp=structArray[i].scpe;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //bpos
+            if(structArray[i].bpos.find("@")!=string::npos){
+                temp=structArray[i].bpos;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //argt
+            if(structArray[i].argt.find("@")!=string::npos){
+                temp=structArray[i].argt;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //expr
+            if(structArray[i].expr.find("@")!=string::npos){
+                temp=structArray[i].expr;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //elts
+            if(structArray[i].elts.find("@")!=string::npos){
+                temp=structArray[i].elts;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //op0
+            if(structArray[i].op0.find("@")!=string::npos){
+                temp=structArray[i].op0;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //op1
+            if(structArray[i].op1.find("@")!=string::npos){
+                temp=structArray[i].op1;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //note
+            if(structArray[i].note.find("@")!=string::npos){
+                temp=structArray[i].note;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //op2
+            if(structArray[i].op2.find("@")!=string::npos){
+                temp=structArray[i].op2;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //fn
+            if(structArray[i].fn.find("@")!=string::npos){
+                temp=structArray[i].fn;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //vars
+            if(structArray[i].vars.find("@")!=string::npos){
+                temp=structArray[i].vars;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //labl
+            if(structArray[i].labl.find("@")!=string::npos){
+                temp=structArray[i].labl;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //domn
+            if(structArray[i].domn.find("@")!=string::npos){
+                temp=structArray[i].domn;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            //refd
+            if(structArray[i].refd.find("@")!=string::npos){
+                temp=structArray[i].refd;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num0.find("@")!=string::npos){
+                temp=structArray[i].num0;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num1.find("@")!=string::npos){
+                temp=structArray[i].num1;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num2.find("@")!=string::npos){
+                temp=structArray[i].num2;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num3.find("@")!=string::npos){
+                temp=structArray[i].num3;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num4.find("@")!=string::npos){
+                temp=structArray[i].num4;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num5.find("@")!=string::npos){
+                temp=structArray[i].num5;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num6.find("@")!=string::npos){
+                temp=structArray[i].num6;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num7.find("@")!=string::npos){
+                temp=structArray[i].num7;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num8.find("@")!=string::npos){
+                temp=structArray[i].num8;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num9.find("@")!=string::npos){
+                temp=structArray[i].num9;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num10.find("@")!=string::npos){
+                temp=structArray[i].num10;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+            if(structArray[i].num11.find("@")!=string::npos){
+                temp=structArray[i].num11;
+                temp.erase(0,1);
+                if(structArray[atoi(temp.c_str())].flag!=0&&structArray[i].flag==1)
+                    structArray[atoi(temp.c_str())].flag=1;
+                if(structArray[atoi(temp.c_str())].flag!=1&&structArray[i].flag==0)
+                    structArray[atoi(temp.c_str())].flag=0;
+            }
+
+        }
+    }
+    vector<int>bc; //处理srcp
     for(int i=1;i<=count;i++)//处理call_expr
         if(structArray[i].NodeName=="call_expr")
         {bc.push_back(i);
             structArray[i].ifuseful=true;
         }
-    //for(int i=0;i<bc.size();i++)/////////
-    //cout<<endl<<bc[i]<<endl;/////////////
     for(int j=0;j<bc.size();j++)
         visit_Useful_Node(bc[j]);
-    //cout<<"hello!447"<<endl;
 
 
-    //Here i print all useful node
-    for(int k=1;k<=count;k++)
-        if(structArray[k].ifuseful==true)
-        {
-            ShowAStruct(k);
-        }
+    for(int i=1;i<=count;i++)
+        if(structArray[i].flag==1)
+            ShowAStruct(i);
+
+
+
+
+
     //cout<<structArray[k].NodeSequenceNUm<<endl;
 }
