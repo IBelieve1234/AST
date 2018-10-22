@@ -25,24 +25,15 @@ typedef struct StructNode
     string name;
     string type;
     string chan;
-    //
     string strg;
-    //
-    int lngt;
     string size;
-    int algn;
-    int prec;
     string sign;
     string min;
     string max;
-    int low;
-    int high;
     string unql;
     string ptd;
     string mngl;
-    //
     string srcp;
-    //
     string body;
     string link;
     string retn;
@@ -55,7 +46,6 @@ typedef struct StructNode
     string scpe;
     string bpos;
     string argt;
-    int used;
     string expr;
     string elts;
     string op0;
@@ -79,7 +69,14 @@ typedef struct StructNode
     string num9;
     string num10;
     string num11;
+    int lngt;
+    int algn;
+    int prec;
+    int low;
+    int high;
+    int used;
     bool ifvisited;
+    bool ifvisited1;
     bool ifuseful;
     int flag;
 }Node;

@@ -1016,6 +1016,415 @@ void Delete_redundant_information(string file_position){
         if(structArray[i].flag==1)
             ShowAStruct(i);
 
+        fstream creatGraph;
+        queue<int>a;
+        creatGraph.open("/root/graphviz/graph.dot",ios::out);
+        creatGraph<<"digraph structs{"<<endl<<"  node[shape=record]";
+        for(int i=1;i<=count;i++)
+            if(structArray[i].NodeName=="function_decl"&&structArray[i].srcp.find(".c")!=string::npos&&structArray[i].body.find("@")!=string::npos)
+                a.push(i);
+            cout<<"sss"<<a.front();
+
+            int j=0;
+            string buf[47]={"name",};
+            while(!a.empty()){
+                creatGraph<<"structNode"<<j<<"[label="<<" \" ";
+                int tmp=a.front();
+                a.pop();
+                string temp;
+                if(structArray[tmp].name.find("@")!=string::npos) {
+                    temp = structArray[tmp].name;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1&&structArray[atoi(temp.c_str())].ifvisited1!=false)
+                    {a.push(atoi(temp.c_str()));
+                    creatGraph<<"<name>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].type.find("@")!=string::npos) {
+                    temp = structArray[tmp].type;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<type>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].chan.find("@")!=string::npos) {
+                    temp = structArray[tmp].chan;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<chan>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].strg.find("@")!=string::npos) {
+                    temp = structArray[tmp].strg;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<strg>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].size.find("@")!=string::npos) {
+                    temp = structArray[tmp].size;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<size>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].sign.find("@")!=string::npos) {
+                    temp = structArray[tmp].sign;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<sign>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].min.find("@")!=string::npos) {
+                    temp = structArray[tmp].min;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<min>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].min.find("@")!=string::npos) {
+                    temp = structArray[tmp].min;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<min>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].max.find("@")!=string::npos) {
+                    temp = structArray[tmp].max;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<max>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].unql.find("@")!=string::npos) {
+                    temp = structArray[tmp].unql;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<unql>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].ptd.find("@")!=string::npos) {
+                    temp = structArray[tmp].ptd;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<ptd>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].mngl.find("@")!=string::npos) {
+                    temp = structArray[tmp].mngl;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<mngl>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].srcp.find("@")!=string::npos) {
+                    temp = structArray[tmp].srcp;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<srcp>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].body.find("@")!=string::npos) {
+                    temp = structArray[tmp].body;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<body>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].link.find("@")!=string::npos) {
+                    temp = structArray[tmp].link;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<link>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].retn.find("@")!=string::npos) {
+                    temp = structArray[tmp].retn;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<retn>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].prms.find("@")!=string::npos) {
+                    temp = structArray[tmp].prms;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<prms>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].valu.find("@")!=string::npos) {
+                    temp = structArray[tmp].valu;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<valu>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].qual.find("@")!=string::npos) {
+                    temp = structArray[tmp].qual;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<qual>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].tag.find("@")!=string::npos) {
+                    temp = structArray[tmp].tag;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<tag>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].flds.find("@")!=string::npos) {
+                    temp = structArray[tmp].flds;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<flds>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].args.find("@")!=string::npos) {
+                    temp = structArray[tmp].args;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<args>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].scpe.find("@")!=string::npos) {
+                    temp = structArray[tmp].scpe;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<scpe>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].bpos.find("@")!=string::npos) {
+                    temp = structArray[tmp].bpos;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<bpos>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].argt.find("@")!=string::npos) {
+                    temp = structArray[tmp].argt;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<argt>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].expr.find("@")!=string::npos) {
+                    temp = structArray[tmp].expr;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<expr>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].elts.find("@")!=string::npos) {
+                    temp = structArray[tmp].elts;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<elts>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].op0.find("@")!=string::npos) {
+                    temp = structArray[tmp].op0;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<op0>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].op1.find("@")!=string::npos) {
+                    temp = structArray[tmp].op1;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<op1>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].note.find("@")!=string::npos) {
+                    temp = structArray[tmp].note;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<note>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].op2.find("@")!=string::npos) {
+                    temp = structArray[tmp].op2;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<op2>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].fn.find("@")!=string::npos) {
+                    temp = structArray[tmp].fn;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<fn>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].vars.find("@")!=string::npos) {
+                    temp = structArray[tmp].vars;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<vars>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].labl.find("@")!=string::npos) {
+                    temp = structArray[tmp].labl;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<labl>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].domn.find("@")!=string::npos) {
+                    temp = structArray[tmp].domn;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<domn>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].refd.find("@")!=string::npos) {
+                    temp = structArray[tmp].refd;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<refd>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num0.find("@")!=string::npos) {
+                    temp = structArray[tmp].num0;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num0>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num1.find("@")!=string::npos) {
+                    temp = structArray[tmp].num1;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num1>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num2.find("@")!=string::npos) {
+                    temp = structArray[tmp].num2;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num2>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num3.find("@")!=string::npos) {
+                    temp = structArray[tmp].num3;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num3>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num4.find("@")!=string::npos) {
+                    temp = structArray[tmp].num4;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num4>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num5.find("@")!=string::npos) {
+                    temp = structArray[tmp].num5;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num5>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num6.find("@")!=string::npos) {
+                    temp = structArray[tmp].num6;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num6>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num7.find("@")!=string::npos) {
+                    temp = structArray[tmp].num7;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num7>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num8.find("@")!=string::npos) {
+                    temp = structArray[tmp].num8;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num8>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num9.find("@")!=string::npos) {
+                    temp = structArray[tmp].num9;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num9>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num10.find("@")!=string::npos) {
+                    temp = structArray[tmp].num10;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num10>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                if(structArray[tmp].num11.find("@")!=string::npos) {
+                    temp = structArray[tmp].num11;
+                    temp.erase(0, 1);
+                    if(structArray[atoi(temp.c_str())].flag==1)
+                    {a.push(atoi(temp.c_str()));
+                        creatGraph<<"<num11>"<<atoi(temp.c_str())<<"|";
+                    }
+                }
+                creatGraph<<" \"];" ;
+                creatGraph<<endl;
+                j++;
+            }
+         cout<<endl<<"kkk"<<j;
+
+
+        creatGraph<<endl<<"}";
+        creatGraph.close();
 
 
 

@@ -9,6 +9,7 @@
 #include<sstream>
 #include<cstdlib>
 #include<vector>
+#include<queue>
 #include"Pretreatment.h"
 using namespace std;
 
